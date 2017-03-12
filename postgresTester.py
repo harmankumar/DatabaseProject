@@ -7,7 +7,7 @@ import csv
 def main():
 
 	# Bulk Load!
-	conn = psycopg2.connect(dbname='GOTDB', user='postgres', password='root')
+	conn = psycopg2.connect(dbname='gotdb', user='postgres', password='root')
 	cur = conn.cursor()
 	
 	# IGNORE	
@@ -18,27 +18,20 @@ def main():
 	# 	cur.execute("drop table " + row[1] + " cascade")    
 
 
-	# query = """CREATE TABLE deaths
-	# 				(
-	# 					YearStart      INT     ,
-	# 					YearEnd        INT     ,
-	# 					LocationAbbr   LONGTEXT,
-	# 					LocationDesc   LONGTEXT,
-	# 					DataSource     LONGTEXT,
-	# 					Topic          LONGTEXT
-	# 				)
-	# 		"""
+
+
 
 	# some bool fields have been made int, hope youre cool wih that :p
+	
 	query = """CREATE TABLE deaths
 					(
-						Name	LONGTEXT,
-						Allegiances	LONGTEXT,	
+						Name	TEXT,
+						Allegiances	TEXT,	
 						DeathYear	INT,
 						BookofDeath INT,	
 						DeathChapter INT,
 						BookIntroChapter INT,	
-						Gender	LONGTEXT,
+						Gender	TEXT,
 						Nobility	INT,	
 						GoT	INT,
 						CoK	 INT,
@@ -52,27 +45,27 @@ def main():
 
 	query = """CREATE TABLE battles
 					(
-						defender_king LONGTEXT,	
-						attacker_1	LONGTEXT,
-						attacker_2	LONGTEXT,
-						attacker_3	LONGTEXT,
-						attacker_4	LONGTEXT,
-						defender_1	LONGTEXT,
-						defender_2	LONGTEXT,
-						defender_3	LONGTEXT,
-						defender_4	LONGTEXT,
-						attacker_outcome	LONGTEXT,
-						battle_type	LONGTEXT,
+						defender_king TEXT,	
+						attacker_1	TEXT,
+						attacker_2	TEXT,
+						attacker_3	TEXT,
+						attacker_4	TEXT,
+						defender_1	TEXT,
+						defender_2	TEXT,
+						defender_3	TEXT,
+						defender_4	TEXT,
+						attacker_outcome	TEXT,
+						battle_type	TEXT,
 						major_death	INT,
 						major_capture	INT,
 						attacker_size	INT,
 						defender_size	INT,
-						attacker_commander	LONGTEXT,
-						defender_commander LONGTEXT,	
+						attacker_commander	TEXT,
+						defender_commander TEXT,	
 						summer	INT,
-						location LONGTEXT,
-						region	LONGTEXT,
-						note LONGTEXT
+						location TEXT,
+						region	TEXT,
+						note TEXT
 					)
 			"""
 	cur.execute(query)
@@ -82,19 +75,19 @@ def main():
 						SNo	INT,
 						actual	INT,
 						pred	INT,
-						alive	DOUBLE,
-						plod	DOUBLE,
-						name	LONGTEXT,
-						title	LONGTEXT,
-						Gender	LONGTEXT,
-						culture	LONGTEXT,
+						alive	DOUBLE PRECISION,
+						plod	DOUBLE PRECISION,
+						name	TEXT,
+						title	TEXT,
+						Gender	TEXT,
+						culture	TEXT,
 						dateOfBirth	INT,
 						DateoFdeath	INT,
-						mother	LONGTEXT,
-						father	LONGTEXT,
-						heir	LONGTEXT,
-						house	LONGTEXT,
-						spouse	LONGTEXT,
+						mother	TEXT,
+						father	TEXT,
+						heir	TEXT,
+						house	TEXT,
+						spouse	TEXT,
 						book1	INT,
 						book2	INT,
 						book3	INT,
@@ -110,7 +103,7 @@ def main():
 						numDeadRelations INT,	
 						boolDeadRelations	INT,
 						isPopular	INT,
-						popularity	DOUBLE,
+						popularity	DOUBLE PRECISION,
 						isAlive INT
 					)
 			"""

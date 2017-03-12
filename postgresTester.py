@@ -109,8 +109,32 @@ def main():
 			"""
 	cur.execute(query)
 
+	# add the right directories etc. to bulk load.
+
+	# query = """COPY predictions (SNo,	actual,	pred,	alive,	plod,	name,	title,	Gender,	culture,	dateOfBirth,	DateoFdeath,	mother,	father,	heir,	house,	spouse,	book1,	book2,	book3,	book4,	book5,	isAliveMother,	isAliveFather,	isAliveHeir, isAliveSpouse,	isMarried,	isNoble,	age,	numDeadRelations,	boolDeadRelations,	isPopular,	popularity,	isAlive)
+	# 			FROM 'C:\Chronic.csv'
+	# 			WITH DELIMITER ','  
+	# 			CSV HEADER
+	# 		"""
+	# cur.execute(query)
+
+	# query = """COPY deaths (Name,	Allegiances,	DeathYear,	BookofDeath,	DeathChapter,	BookIntroChapter,	Gender,	Nobility,	GoT,	CoK,	SoS,	FfC,	DwD)
+	# 			FROM 'C:\Chronic.csv'
+	# 			WITH DELIMITER ','  
+	# 			CSV HEADER
+	# 		"""
+	# cur.execute(query)
+
+	# query = """COPY battles (name,	year,	battle_number,	attacker_king,	defender_king,	attacker_1,	attacker_2,	attacker_3,	attacker_4,	defender_1,	defender_2,	defender_3,	defender_4,	attacker_outcome,	battle_type,	major_death,	major_capture,	attacker_size,	defender_size,	attacker_commander,	defender_commander,	summer,	location,	region,	note)
+	# 			FROM 'C:\Chronic.csv'
+	# 			WITH DELIMITER ','  
+	# 			CSV HEADER
+	# 		"""
+	# cur.execute(query)
+
+
 	
-	# add the right format and directories etc. to bulk load.
+
 
 	# query = """COPY chronic1 (YearStart,    YearEnd,    LocationAbbr,   LocationDesc,   DataSource, Topic)
 	# 			FROM 'C:\Chronic.csv'

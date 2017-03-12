@@ -1,0 +1,22 @@
+About the datasets
+
+https://www.kaggle.com/mylesoneill/game-of-thrones  --> Dataset Link
+
+https://github.com/chrisalbon/war_of_the_five_kings_dataset --> Battles.csv github
+
+
+
+
+
+
+Ideas:
+
+Character predictions has a 
+
+
+Work already done:
+
+https://www.kaggle.com/gowrishankarin/d/mylesoneill/game-of-thrones/analysis-on-battles
+
+1) Which king fought most battles?
+	Graph included

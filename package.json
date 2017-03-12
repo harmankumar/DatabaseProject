@@ -1,0 +1,42 @@
+{
+  "name": "brca-ems",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/709nikhil/brca-ems.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/709nikhil/brca-ems/issues"
+  },
+  "homepage": "https://github.com/709nikhil/brca-ems#readme",
+  "dependencies": {
+    "bcrypt": "^1.0.1",
+    "body-parser": "^1.15.2",
+    "bootstrap": "^3.3.7",
+    "browserify": "^13.1.1",
+    "button": "^1.1.1",
+    "es6-promise": "^4.0.5",
+    "express": "^4.14.0",
+    "guid": "0.0.12",
+    "gulp": "^3.9.1",
+    "jquery": "^3.1.1",
+    "mongoose": "^4.7.4",
+    "react": "^15.4.1",
+    "react-activity-indicator": "^0.7.7",
+    "react-dom": "^15.4.1",
+    "react-native": "^0.39.2",
+    "react-native-art": "^1.0.0",
+    "react-router": "^3.0.0",
+    "react-router-active-component": "^4.0.0",
+    "reactify": "^1.1.1",
+    "underscore": "^1.8.3",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}

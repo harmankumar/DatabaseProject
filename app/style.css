@@ -1,0 +1,29 @@
+body {
+    margin-top: 75px;
+}
+
+.navbar-nav > li > a {
+    padding-top:5px !important;
+    padding-bottom:5px !important;
+}
+
+.navbar-header {
+    float: left;
+    padding: 5px;
+    text-align: center;
+    width: 100%;
+}
+
+.navbar-brand {
+    height: auto !important;
+    float: none;
+}
+
+.navbar {
+    min-height:32px !important
+}
+
+.navbar-lower {
+    margin-top: 32px;
+}
+

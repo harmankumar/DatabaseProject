@@ -1,0 +1,20 @@
+{
+  "name": "brca-ems",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Nikhil Chatuvedi <709nikhil@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/709nikhil/brca-ems",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-css": "^3.3.6"
+  }
+}

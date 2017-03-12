@@ -1,4 +1,4 @@
-S.No,actual,pred,alive,plod,name,title,Gender,culture,dateOfBirth,DateoFdeath,mother,father,heir,house,spouse,book1,book2,book3,book4,book5,isAliveMother,isAliveFather,isAliveHeir,isAliveSpouse,isMarried,isNoble,age,numDeadRelations,boolDeadRelations,isPopular,popularity,isAlive
+SNo,actual,pred,alive,plod,name,title,Gender,culture,dateOfBirth,DateoFdeath,mother,father,heir,house,spouse,book1,book2,book3,book4,book5,isAliveMother,isAliveFather,isAliveHeir,isAliveSpouse,isMarried,isNoble,age,numDeadRelations,boolDeadRelations,isPopular,popularity,isAlive
 1,0,0,0.054,0.946,Viserys II Targaryen,,Male,,,,Rhaenyra Targaryen,Daemon Targaryen,Aegon IV Targaryen,,,0,0,0,0,0,1,0,0,,0,0,,11,1,1,0.605351171,0
 2,1,0,0.387,0.613,Walder Frey,Lord of the Crossing,Male,Rivermen,208,,,,,House Frey,Perra Royce,1,1,1,1,1,,,,1,1,1,97,1,1,1,0.89632107,1
 3,1,0,0.493,0.507,Addison Hill,Ser,Male,,,,,,,House Swyft,,0,0,0,1,0,,,,,0,1,,0,0,0,0.267558528,1

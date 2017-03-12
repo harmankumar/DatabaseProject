@@ -11,12 +11,19 @@ https://github.com/chrisalbon/war_of_the_five_kings_dataset --> Battles.csv gith
 
 Ideas:
 
-Character predictions has a 
+Character predictions has a field called ispopular which can be used as a filter to get interesting characters.
+
+
+
+
 
 
 Work already done:
 
 https://www.kaggle.com/gowrishankarin/d/mylesoneill/game-of-thrones/analysis-on-battles
 
+
 1) Which king fought most battles?
 	Graph included
+
+2) 

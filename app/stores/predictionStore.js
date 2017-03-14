@@ -2,38 +2,38 @@
  * Created by Nikhil on 27/12/16.
  */
 var dispatcher = require("../dispatcher");
-var eventService = require("../services/eventServices");
+var predictionService = require("../services/predictionServices");
 
-function EventStore() {
+function PredictionStore() {
     var listeners = [];
 
     function onChange(listener) {
-        getEvents(listener);
+        getPredictions(listener);
         listeners.push(listener);
     }
 
-    function getEvents(cb){
-        eventService.getEvents().then(function (res) {
+    function getPredictions(cb){
+        predictionService.getPredictions().then(function (res) {
             cb(res);
         });
     }
 
-    function addEvent(school) {
-        eventService.addEvent(school).then(function (res) {
+    function addPrediction(prediction) {
+        predictionService.addPrediction(prediction).then(function (res) {
             console.log(res);
             triggerListeners();
         });
     }
 
-    function deleteEvent(school) {
-        eventService.deleteEvent(school).then(function (res) {
+    function deletePrediction(prediction) {
+        predictionService.deletePrediction(prediction).then(function (res) {
             console.log(res);
             triggerListeners();
         });
     }
 
     function triggerListeners() {
-        getEvents(function (res) {
+        getPredictions(function (res) {
             listeners.forEach(function (listener) {
                 listener(res);
             });
@@ -42,13 +42,13 @@ function EventStore() {
 
     dispatcher.register(function (payload) {
         var split = payload.type.split(":");
-        if (split[0] === "event") {
+        if (split[0] === "prediction") {
             switch (split[1]) {
-                case "addEvent":
-                    addEvent(payload.event);
+                case "addPrediction":
+                    addPrediction(payload.event);
                     break;
-                case "deleteEvent":
-                    deleteEvent(payload.event);
+                case "deletePrediction":
+                    deletePrediction(payload.event);
                     break;
             }
         }
@@ -59,4 +59,4 @@ function EventStore() {
     }
 }
 
-module.exports = EventStore();
+module.exports = PredictionStore();

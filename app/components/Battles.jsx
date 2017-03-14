@@ -1,15 +1,15 @@
 var React = require("react");
 
-var EventInfo = require("./EventInfo.jsx");
+var BattleInfo = require("./BattleInfo.jsx");
 
 module.exports = React.createClass({
     render: function () {
         return(
             <div className="container">
             {
-                 this.props.events.map(function (event, index) {
+                 this.props.battles.map(function (battle, index) {
                      return(
-                        <EventInfo event={event}/>
+                        <BattleInfo battle={battle}/>
                      )
                  })
              }

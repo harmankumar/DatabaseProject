@@ -4,16 +4,16 @@
 var dispatcher = require("../dispatcher");
 
 module.exports = {
-    addEvent:function(event){
+    addBattle:function(battle){
         dispatcher.dispatch({
-            event:event,
-            type:"event:addEvent"
+            battle:battle,
+            type:"battle:addBattle"
         });
     },
-    deleteEvent:function(event){
+    deleteBattle:function(battle){
         dispatcher.dispatch({
-            event:event,
-            type:"event:deleteEvent"
+            battle:battle,
+            type:"battle:deleteBattle"
         });
     }
 };

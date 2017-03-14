@@ -1,14 +1,14 @@
 var $ = require("jquery");
 var promise = require("es6-promise");
-var resourceUrl = "http://localhost:7777/api/events";
+var resourceUrl = "http://localhost:7777/api/battles";
 
 module.exports = {
-    addEvent: function (event) {
+    addBattle: function (battle) {
         var Promise = promise.Promise;
         return new Promise(function (resolve, reject) {
             $.ajax({
                 url: resourceUrl,
-                data: JSON.stringify(event),
+                data: JSON.stringify(battle),
                 method: "POST",
                 dataType: "json",
                 contentType: "application/json",
@@ -17,7 +17,7 @@ module.exports = {
             });
         });
     },
-    getEvents: function () {
+    getBattles: function () {
         var Promise = promise.Promise;
         return new Promise(function (resolve, reject) {
             $.ajax({
@@ -29,12 +29,12 @@ module.exports = {
             });
         });
     },
-    deleteEvent: function (event) {
+    deleteBattle: function (battle) {
         var Promise = promise.Promise;
         return new Promise(function (resolve, reject) {
             $.ajax({
                 url: resourceUrl + "/delete",
-                data: JSON.stringify(event),
+                data: JSON.stringify(battle),
                 method: "POST",
                 dataType: "json",
                 contentType: "application/json",

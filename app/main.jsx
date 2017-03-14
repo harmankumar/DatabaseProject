@@ -6,18 +6,36 @@ var IndexRedirect = require("react-router").IndexRedirect;
 var browserHistory = require("react-router").browserHistory;
 
 var App = require("./components/App.jsx");
-var Home = require("./components/Home.jsx");
+var Predictions = require("./components/Predictions.jsx");
+var Deaths = require("./components/Deaths.jsx");
+var Battles = require("./components/Battles.jsx");
 var Profile = require("./components/Profile.jsx");
-var CreateEvent = require("./components/CreateEvent.jsx");
-var UpdateEvent = require("./components/UpdateEvent.jsx");
+//var CreateEvent = require("./components/CreateEvent.jsx");
+//var UpdateEvent = require("./components/UpdateEvent.jsx");
 
-var eventStore = require("./stores/eventStore");
-var _events = [];
-var getEventsCallback = function(events){
-    _events = events;
+var predictionStore = require("./stores/predictionStore");
+var _predictions = [];
+var getPredictionsCallback = function(predictions){
+    _predictions = predictions;
     render();
 };
-eventStore.onChange(getEventsCallback);
+predictionStore.onChange(getPredictionsCallback);
+
+var deathStore = require("./stores/deathStore");
+var _deaths = [];
+var getDeathsCallback = function(deaths){
+    _deaths = deaths;
+    render();
+};
+deathStore.onChange(getDeathsCallback);
+
+var battleStore = require("./stores/battleStore");
+var _battles = [];
+var getBattlesCallback = function(battles){
+    _battles = battles;
+    render();
+};
+battleStore.onChange(getBattlesCallback);
 
 
 var sessionStore = require("./stores/sessionStore");
@@ -48,11 +66,11 @@ function render(){
     ReactDOM.render(
         <Router history={browserHistory}>
             <Route path="/" component={App}>
-                <IndexRedirect to="home"/>
-                <Route path="home" component={() => <Home events={_events}/>}/>
+                <IndexRedirect to="profile"/>
                 <Route path="profile" component={() => <Profile session={_session}/>}/>
-                <Route path="create" component={() => <CreateEvent session={_session}/>}/>
-                <Route path="update" component={() => <UpdateEvent session={_session} events={_events}/>}/>
+                <Route path="predictions" component={() => <Predictions predictions={_predictions}/>}/>
+                <Route path="deaths" component={() => <Deaths deaths={_deaths}/>}/>
+                <Route path="battles" component={() => <Battles battles={_battles}/>}/>
             </Route>
         </Router>, document.getElementById("main"));
 }

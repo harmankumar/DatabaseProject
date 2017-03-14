@@ -1,5 +1,5 @@
 var React = require("react");
-var actions = require("../actions/eventActions");
+var actions = require("../actions/predictionActions");
 global.jQuery = require("jquery");
 require("bootstrap");
 

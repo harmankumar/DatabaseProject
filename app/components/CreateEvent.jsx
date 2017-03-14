@@ -1,6 +1,6 @@
 var React = require("react");
 
-var actions = require("../actions/eventActions");
+var actions = require("../actions/predictionActions");
 
 var clubs = [
     {name: "Dramatics", value: "drama"},

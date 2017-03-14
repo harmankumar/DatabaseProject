@@ -17,10 +17,10 @@ module.exports = React.createClass({
                 <div id="navbar" className="navbar navbar-default navbar-fixed-top navbar-lower">
                     <div className="container-fluid">
                         <ul className="nav navbar-nav">
-                            <Link to="/home">Home</Link>
                             <Link to="/profile">Profile</Link>
-                            <Link to="/create">Create Event</Link>
-                            <Link to="/update">Update Event</Link>
+                            <Link to="/predictions">Predictions</Link>
+                            <Link to="/deaths">Deaths</Link>
+                            <Link to="/battles">Battles</Link>
                         </ul>
                     </div>
                 </div>

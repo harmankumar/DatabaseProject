@@ -1,9 +1,8 @@
 var React = require("react");
 
 var Login = require("./Login.jsx");
+var Register = require("./Register.jsx");
 var Logout = require("./Logout.jsx");
-
-var SideBarContent = require("./SideBarContent.jsx");
 
 module.exports = React.createClass({
 
@@ -13,7 +12,7 @@ module.exports = React.createClass({
 
     render: function () {
         if (!this.props.session)
-             content = <Login/>;
+            content = <div><Login/><br/><br/><Register/></div>;
         else
              content = <Logout/>;
         console.log(this.props);

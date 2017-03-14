@@ -10,7 +10,13 @@ module.exports = {
             type:"session:login"
         });
     },
-    logout:function(event){
+    register:function(session){
+        dispatcher.dispatch({
+            session:session,
+            type:"session:register"
+        });
+    },
+    logout:function(){
         dispatcher.dispatch({
             type:"session:logout"
         });

@@ -22,6 +22,15 @@ function SessionStore() {
         });
     }
 
+    function register(session) {
+        sessionService.register(session)(function (res, status, err) {
+            if (status === "error")
+                triggerListeners({status: res.status});
+            else
+                triggerListeners({body: res, status: 200});
+        });
+    }
+
     function logout() {
         console.log("logged out");
         triggerListeners({logout: true});
@@ -39,6 +48,9 @@ function SessionStore() {
             switch (split[1]) {
                 case "login":
                     login(payload.session);
+                    break;
+                case "register":
+                    register(payload.session);
                     break;
                 case "logout":
                     logout();

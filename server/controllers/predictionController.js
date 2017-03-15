@@ -15,8 +15,8 @@ function getPredictions(req, res) {
             if (err)
                 res.send(err);
             res.json(result.rows);
-        })
-    })
+        });
+    });
 }
 
 function addPrediction(req, res) {

@@ -43,19 +43,19 @@ var _session = null;
 var getLoginStatusCallback = function(response){
     console.log(response);
     if (response.logout || (response.status > 200 && response.status < 500)) {
-        localStorage.removeItem("brca_ems_id");
-        localStorage.removeItem("brca_ems_api_key");
+        localStorage.removeItem("gotdb_id");
+        localStorage.removeItem("gotdb_api_key");
         _session = null;
     }
     else if (response.status === 200) {
-        localStorage.brca_ems_id = response.body.session.creds.id;
-        localStorage.brca_ems_api_key = response.body.session.creds.apiKey;
+        localStorage.gotdb_id = response.body.session.creds.id;
+        localStorage.gotdb_api_key = response.body.session.creds.apiKey;
         _session = response.body.session;
     }
     render();
 };
-var id = localStorage.brca_ems_id;
-var apiKey = localStorage.brca_ems_api_key;
+var id = localStorage.gotdb_id;
+var apiKey = localStorage.gotdb_api_key;
 if (id && apiKey)
     sessionStore.onChange(getLoginStatusCallback, {creds: {id: id, apiKey: apiKey}});
 else
@@ -68,9 +68,9 @@ function render(){
             <Route path="/" component={App}>
                 <IndexRedirect to="profile"/>
                 <Route path="profile" component={() => <Profile session={_session}/>}/>
-                <Route path="predictions" component={() => <Predictions predictions={_predictions}/>}/>
-                <Route path="deaths" component={() => <Deaths deaths={_deaths}/>}/>
-                <Route path="battles" component={() => <Battles battles={_battles}/>}/>
+                <Route path="predictions" component={() => <Predictions predictions={_predictions} session={_session}/>}/>
+                <Route path="deaths" component={() => <Deaths deaths={_deaths} session={_session}/>}/>
+                <Route path="battles" component={() => <Battles battles={_battles} session={_session}/>}/>
             </Route>
         </Router>, document.getElementById("main"));
 }

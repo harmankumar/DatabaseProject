@@ -8,6 +8,8 @@
 
 \usepackage[T1]{fontenc}
 
+\usepackage{graphicx}
+
 \usepackage[T1]{fontenc}
 
 \sectionfont{\fontsize{10}{10}\selectfont}
@@ -33,12 +35,61 @@
 
 \begin{flushleft}
 
-In the project four classes have been used, namely ScreenSaver, Ball, Table and Menu.The number of balls is accepted from the user as a command line argument. The radius, velocities and color are allocated randomly to the balls. The velocity and color of a ball could be increased or decreased by the user through predefined controls. The motion of every ball is controlled by individual threads. There is a starlight background To make the screensaver look elegant.
+We present a complete database for the most popular TV series, Game of Thrones. We have over 1000 character stats and prediction about their survival based on popularity, number of dead relatives they have and how good their house is doing.
+
+The system allows users to create password secured accounts in order in order to access the GOT Wiki. We also have a separate admin login which allows us to add new information to our databases using a form.\\
+
+You can find the ER diagram of the project at the end of the document.
 
 \end{flushleft} 
 
+\vspace{25px}
 
-\section{Sub Components}
+\section{Data Source}
+
+We took our data from three sources:
+
+\begin{itemize}
+\item A collection of all battles in game of thrones at\\ 
+https://github.com/chrisalbon/war\_of\_the\_five\_kings\_dataset
+
+Following is the schema of the data
+
+\begin{figure}
+\centering
+        \includegraphics[totalheight=16cm]{battles.png}
+\end{figure}
+
+\pagebreak
+
+\item Information about characters, when they died and a brief boi about the characters.\\
+http://allendowney.blogspot.in/2015/03/bayesian-survival-analysis-for-game-of.html
+
+Following is the schema of the data\\
+
+\begin{figure}
+\centering
+        \includegraphics[totalheight=10cm]{deaths.png}
+\end{figure}
+
+\pagebreak
+
+\item A collection of all the character predictions. This dataset contains an expanded view on character deaths, including predictions of how likely they are to die. (Prediction's come from A Song of Ice and Data's algorithm)\\
+https://got.show/
+
+\begin{figure}
+\centering
+        \includegraphics[totalheight=13cm]{prediction.png}
+\end{figure}
+
+\pagebreak
+
+\end{itemize}
+
+\vspace{25px}
+
+A python script was written to cleanup the data, create the database, tables and load the data into the tables. 
+\section{Functionality and Components}
 
 The following are the four classes we intend to have in our project and a brief description of the purpose they serve.
 

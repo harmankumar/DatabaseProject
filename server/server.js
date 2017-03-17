@@ -29,6 +29,9 @@ app.use("/api/predictions/avgpop", predictionController.getAvgPopularity);
 app.use("/api/predictions/avgpred", predictionController.getAvgPrediction);
 
 app.get("/api/deaths", deathController.getDeaths);
+app.use("/api/deaths/filter", deathController.changeFilter);
+app.use("/api/deaths/bloodybook", deathController.getBloodyBook);
+
 app.get("/api/battles", battleController.getBattles);
 //app.post("/api/predictions", adminController("secy"), predictionController.addEvent);
 //app.post("/api/predictions/delete", adminController("secy"), predictionController.deleteEvent);

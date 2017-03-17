@@ -57,7 +57,7 @@ function changeFilter(req, res) {
 
 function getAvgPopularity(req, res) {
     var filter = req.body;
-    var query = "SELECT AVG(popularity) FROM predictions ";
+    var query = "SELECT CAST(AVG(popularity) AS DECIMAL(10,2)) FROM predictions ";
     query += filterQuery(filter);
     console.log(query);
     pg.connect(conString, function (err, client, done) {
@@ -76,7 +76,7 @@ function getAvgPopularity(req, res) {
 
 function getAvgPrediction(req, res) {
     var filter = req.body;
-    var query = "SELECT AVG(pred) FROM predictions ";
+    var query = "SELECT CAST(AVG(alive) AS DECIMAL(10,3)) FROM predictions ";
     query += filterQuery(filter);
     console.log(query);
     pg.connect(conString, function (err, client, done) {

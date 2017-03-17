@@ -3,7 +3,7 @@ var React = require("react");
 var PredictionInfo = require("./PredictionInfo.jsx");
 var actions = require("../actions/predictionActions");
 
-var houses = ["Stark", "Targaryen", "Greyjoy", "Baratheon", "Lannister", "Frey", "Martell", "Tyrell", "Tully", "Arryn"];
+var houses = ["Stark", "Targaryen", "Greyjoy", "Baratheon", "Lannister", "Frey", "Martell", "Tyrell", "Tully", "Arryn", "Watch"];
 
 module.exports = React.createClass({
     getInitialState: function () {

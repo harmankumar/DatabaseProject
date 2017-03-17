@@ -4,6 +4,18 @@
 var dispatcher = require("../dispatcher");
 
 module.exports = {
+    getBloodyBook: function (filter) {
+        dispatcher.dispatch({
+            filter:filter,
+            type:"death:getBloodyBook"
+        });
+    },
+    changeFilter:function(filter){
+        dispatcher.dispatch({
+            filter:filter,
+            type:"death:changeFilter"
+        });
+    },
     addDeath:function(death){
         dispatcher.dispatch({
             death:death,

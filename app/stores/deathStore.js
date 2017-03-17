@@ -8,13 +8,21 @@ function DeathStore() {
     var listeners = [];
 
     function onChange(listener) {
-        getDeaths(listener);
+        //getDeaths(listener);
         listeners.push(listener);
     }
 
     function getDeaths(cb){
         deathService.getDeaths().then(function (res) {
             cb(res);
+        });
+    }
+
+    function changeFilter(filter) {
+        deathService.changeFilter(filter).then(function (res) {
+            listeners.forEach(function (listener) {
+                listener(res);
+            });
         });
     }
 
@@ -32,6 +40,12 @@ function DeathStore() {
         });
     }
 
+    function getBloodyBook(filter) {
+        deathService.getBloodyBook(filter).then(function (res) {
+            alert("Most Deadly Book for Selected Group: " + res[0].bookofdeath);
+        });
+    }
+
     function triggerListeners() {
         getDeaths(function (res) {
             listeners.forEach(function (listener) {
@@ -44,11 +58,17 @@ function DeathStore() {
         var split = payload.type.split(":");
         if (split[0] === "death") {
             switch (split[1]) {
+                case "changeFilter":
+                    changeFilter(payload.filter);
+                    break;
                 case "addDeath":
                     addDeath(payload.event);
                     break;
                 case "deleteDeath":
                     deleteDeath(payload.event);
+                    break;
+                case "getBloodyBook":
+                    getBloodyBook(payload.filter);
                     break;
             }
         }

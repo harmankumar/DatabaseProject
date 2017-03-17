@@ -8,13 +8,21 @@ function PredictionStore() {
     var listeners = [];
 
     function onChange(listener) {
-        getPredictions(listener);
+        //getPredictions(listener);
         listeners.push(listener);
     }
 
     function getPredictions(cb){
         predictionService.getPredictions().then(function (res) {
             cb(res);
+        });
+    }
+
+    function changeFilter(filter) {
+        predictionService.changeFilter(filter).then(function (res) {
+            listeners.forEach(function (listener) {
+                listener(res);
+            });
         });
     }
 
@@ -32,6 +40,18 @@ function PredictionStore() {
         });
     }
 
+    function getAvgPopularity(filter) {
+        predictionService.getAvgPopularity(filter).then(function (res) {
+            alert("Average Popularity of Selected Group: " + res[0].avg);
+        });
+    }
+
+    function getAvgPrediction(filter) {
+        predictionService.getAvgPrediction(filter).then(function (res) {
+            alert("Average Survival Chance of Selected Group: " + res[0].avg);
+        });
+    }
+
     function triggerListeners() {
         getPredictions(function (res) {
             listeners.forEach(function (listener) {
@@ -44,11 +64,20 @@ function PredictionStore() {
         var split = payload.type.split(":");
         if (split[0] === "prediction") {
             switch (split[1]) {
+                case "changeFilter":
+                    changeFilter(payload.filter);
+                    break;
                 case "addPrediction":
-                    addPrediction(payload.event);
+                    addPrediction(payload.prediction);
                     break;
                 case "deletePrediction":
-                    deletePrediction(payload.event);
+                    deletePrediction(payload.prediction);
+                    break;
+                case "getAvgPopularity":
+                    getAvgPopularity(payload.filter);
+                    break;
+                case "getAvgPrediction":
+                    getAvgPrediction(payload.filter);
                     break;
             }
         }

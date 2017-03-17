@@ -24,6 +24,10 @@ app.use('/profile/update', express.static(path.join(__dirname,"../app/dist")));
 app.use(bodyParser.json());
 
 app.get("/api/predictions", predictionController.getPredictions);
+app.use("/api/predictions/filter", predictionController.changeFilter);
+app.use("/api/predictions/avgpop", predictionController.getAvgPopularity);
+app.use("/api/predictions/avgpred", predictionController.getAvgPrediction);
+
 app.get("/api/deaths", deathController.getDeaths);
 app.get("/api/battles", battleController.getBattles);
 //app.post("/api/predictions", adminController("secy"), predictionController.addEvent);

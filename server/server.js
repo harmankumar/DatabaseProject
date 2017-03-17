@@ -33,6 +33,10 @@ app.use("/api/deaths/filter", deathController.changeFilter);
 app.use("/api/deaths/bloodybook", deathController.getBloodyBook);
 
 app.get("/api/battles", battleController.getBattles);
+app.use("/api/battles/filter", battleController.changeFilter);
+app.use("/api/battles/maxwin", battleController.getMaxWin);
+app.use("/api/battles/maxdef", battleController.getMaxDefeat);
+
 //app.post("/api/predictions", adminController("secy"), predictionController.addEvent);
 //app.post("/api/predictions/delete", adminController("secy"), predictionController.deleteEvent);
 

@@ -15,8 +15,11 @@ function SessionStore() {
 
     function login(session) {
         sessionService.login(session)(function (res, status, err) {
-            if (status === "error")
+            if (status === "error") {
+                if (res.status == 401)
+                    alert("Username or Password incorrect!");
                 triggerListeners({status: res.status});
+            }
             else
                 triggerListeners({body: res, status: 200});
         });
@@ -24,8 +27,11 @@ function SessionStore() {
 
     function register(session) {
         sessionService.register(session)(function (res, status, err) {
-            if (status === "error")
+            if (status === "error") {
+                if (res.status == 409)
+                    alert("Username already taken!");
                 triggerListeners({status: res.status});
+            }
             else
                 triggerListeners({body: res, status: 200});
         });

@@ -32,18 +32,17 @@ module.exports = {
         });
     },
     addDeath: function (death) {
-        var Promise = promise.Promise;
-        return new Promise(function (resolve, reject) {
+        return function (resolve) {
             $.ajax({
-                url: resourceUrl,
+                url: "http://localhost:7777/api/kill",
                 data: JSON.stringify(death),
                 method: "POST",
                 dataType: "json",
                 contentType: "application/json",
                 success: resolve,
-                error: reject
+                error: resolve
             });
-        });
+        };
     },
     getDeaths: function () {
         var Promise = promise.Promise;

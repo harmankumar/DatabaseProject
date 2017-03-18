@@ -94,12 +94,23 @@ function getAvgPrediction(req, res) {
 }
 
 function addPrediction(req, res) {
-    var event = new Prediction(_.extend({}, req.body));
-    event.save(function (err) {
+    var p = req.body;
+    if (!p || !p.name || !p.plod || !p.gender)
+        return res.status(400).send('400 Bad Request');
+    pg.connect(conString, function (err, client, done) {
         if (err)
-            res.send(err);
-        else
-            res.json(event);
+            return res.status(503).send('503 Gateway Timeout');
+        client.query(   "INSERT INTO predictions (name, house, actual, pred, plod, alive, title, gender, popularity, ispopular, book1, book2, book3, book4, book5)"
+            + "VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)",
+            [p.name, p.house, p.actual, 0, parseFloat(p.plod), 1.0 - parseFloat(p.plod), p.title, p.gender, parseFloat(p.popularity), 0, 0, 0, 0, 0, 0],
+            function (err, result) {
+                done();
+                if (err) {
+                    console.log(err);
+                    return res.status(409).send('409 Conflict');
+                }
+                return res.status(200);
+            });
     });
 }
 

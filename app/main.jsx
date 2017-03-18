@@ -10,8 +10,8 @@ var Predictions = require("./components/Predictions.jsx");
 var Deaths = require("./components/Deaths.jsx");
 var Battles = require("./components/Battles.jsx");
 var Profile = require("./components/Profile.jsx");
-//var CreateEvent = require("./components/CreateEvent.jsx");
-//var UpdateEvent = require("./components/UpdateEvent.jsx");
+var Create = require("./components/Create.jsx");
+var Kill = require("./components/Kill.jsx");
 
 var predictionStore = require("./stores/predictionStore");
 var _predictions = [];
@@ -71,6 +71,8 @@ function render(){
                 <Route path="predictions" component={() => <Predictions predictions={_predictions} session={_session}/>}/>
                 <Route path="deaths" component={() => <Deaths deaths={_deaths} session={_session}/>}/>
                 <Route path="battles" component={() => <Battles battles={_battles} session={_session}/>}/>
+                <Route path="create" component={() => <Create session={_session}/>}/>
+                <Route path="kill" component={() => <Kill session={_session}/>}/>
             </Route>
         </Router>, document.getElementById("main"));
 }

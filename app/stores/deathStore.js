@@ -27,8 +27,11 @@ function DeathStore() {
     }
 
     function addDeath(death) {
-        deathService.addDeath(death).then(function (res) {
+        deathService.addDeath(death)(function (res, status, err) {
             console.log(res);
+            if (status === "error") {
+                alert("Error: Character not present in Predictions!");
+            }
             triggerListeners();
         });
     }
@@ -62,10 +65,10 @@ function DeathStore() {
                     changeFilter(payload.filter);
                     break;
                 case "addDeath":
-                    addDeath(payload.event);
+                    addDeath(payload.death);
                     break;
                 case "deleteDeath":
-                    deleteDeath(payload.event);
+                    deleteDeath(payload.death);
                     break;
                 case "getBloodyBook":
                     getBloodyBook(payload.filter);

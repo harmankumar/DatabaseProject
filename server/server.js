@@ -17,10 +17,10 @@ app.use('/profile', express.static(path.join(__dirname,"../app/dist")));
 app.use('/predictions', express.static(path.join(__dirname,"../app/dist")));
 app.use('/battles', express.static(path.join(__dirname,"../app/dist")));
 app.use('/deaths', express.static(path.join(__dirname,"../app/dist")));
+
 app.use('/create', express.static(path.join(__dirname,"../app/dist")));
-app.use('/update', express.static(path.join(__dirname,"../app/dist")));
-app.use('/profile/create', express.static(path.join(__dirname,"../app/dist")));
-app.use('/profile/update', express.static(path.join(__dirname,"../app/dist")));
+app.use('/kill', express.static(path.join(__dirname,"../app/dist")));
+
 app.use(bodyParser.json());
 
 app.get("/api/predictions", predictionController.getPredictions);
@@ -37,8 +37,8 @@ app.use("/api/battles/filter", battleController.changeFilter);
 app.use("/api/battles/maxwin", battleController.getMaxWin);
 app.use("/api/battles/maxdef", battleController.getMaxDefeat);
 
-//app.post("/api/predictions", adminController("secy"), predictionController.addEvent);
-//app.post("/api/predictions/delete", adminController("secy"), predictionController.deleteEvent);
+app.post("/api/create", predictionController.addPrediction);
+app.post("/api/kill", deathController.addDeath);
 
 app.use("/api/login", sessionController.login);
 app.use("/api/register", sessionController.register);

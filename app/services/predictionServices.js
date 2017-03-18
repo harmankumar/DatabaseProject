@@ -46,18 +46,17 @@ module.exports = {
         });
     },
     addPrediction: function (prediction) {
-        var Promise = promise.Promise;
-        return new Promise(function (resolve, reject) {
+        return function (resolve) {
             $.ajax({
-                url: resourceUrl,
+                url: "http://localhost:7777/api/create",
                 data: JSON.stringify(prediction),
                 method: "POST",
                 dataType: "json",
                 contentType: "application/json",
                 success: resolve,
-                error: reject
+                error: resolve
             });
-        });
+        };
     },
     getPredictions: function () {
         var Promise = promise.Promise;

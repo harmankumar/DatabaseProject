@@ -87,12 +87,23 @@ function getBloodyBook(req, res) {
 }
 
 function addDeath(req, res) {
-    var event = new Death(_.extend({}, req.body));
-    event.save(function (err) {
+    var d = req.body;
+    if (!d || !d.name || !d.gender)
+        return res.status(400).send('400 Bad Request');
+    pg.connect(conString, function (err, client, done) {
         if (err)
-            res.send(err);
-        else
-            res.json(event);
+            return res.status(503).send('503 Gateway Timeout');
+        client.query(   "INSERT INTO deaths (name, allegiances, gender, deathyear, bookofdeath, deathchapter, bookintrochapter, nobility)"
+            + "VALUES ($1, $2, $3, $4, $5, $6, $7, $8)",
+            [d.name, d.allegiances, d.gender, parseInt(d.deathyear), parseInt(d.bookofdeath), parseInt(d.deathchapter), parseInt(d.bookintrochapter), 0],
+            function (err, result) {
+                done();
+                if (err) {
+                    console.log(err);
+                    return res.status(409).send('409 Conflict');
+                }
+                return res.status(200);
+            });
     });
 }
 

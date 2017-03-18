@@ -27,8 +27,11 @@ function PredictionStore() {
     }
 
     function addPrediction(prediction) {
-        predictionService.addPrediction(prediction).then(function (res) {
+        predictionService.addPrediction(prediction)(function (res, status, err) {
             console.log(res);
+            if (status === "error") {
+                alert("Error: Character already exists!");
+            }
             triggerListeners();
         });
     }

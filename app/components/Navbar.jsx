@@ -21,6 +21,8 @@ module.exports = React.createClass({
                             <Link to="/predictions">Predictions</Link>
                             <Link to="/deaths">Deaths</Link>
                             <Link to="/battles">Battles</Link>
+                            <Link to="/create">Create Character</Link>
+                            <Link to="/kill">Kill Character</Link>
                         </ul>
                     </div>
                 </div>
